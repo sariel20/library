@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+
 android {
     compileSdkVersion 26
 
@@ -36,6 +37,13 @@ dependencies {
 
     compile 'io.reactivex:rxandroid:1.2.1'
     compile "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
+
+    //Dagger2
+    compile "com.google.dagger:dagger:$rootProject.ext.dagger_version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.dagger_version"
+
+    compile 'com.trello.rxlifecycle2:rxlifecycle:2.2.1'
+    compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'

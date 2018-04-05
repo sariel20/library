@@ -4,7 +4,8 @@ import com.lc.lib.presenter.BasePresenter;
 import com.lc.lib.rx.BaseSubscriber;
 import com.lc.library.presenter.view.RegisterView;
 import com.lc.library.service.UserService;
-import com.lc.library.service.impl.UserServiceImpl;
+
+import javax.inject.Inject;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -17,9 +18,17 @@ import rx.schedulers.Schedulers;
 
 public class RegisterPresenter extends BasePresenter<RegisterView> {
 
+    @Inject
+    UserService userService;
+
+    /*标注构造*/
+    @Inject
+    public RegisterPresenter() {
+    }
+
     public void register(String mobile, String pwd, String verifyCode) {
         /*2 实现注册接口*/
-        UserService userService = new UserServiceImpl();
+
         userService.register(mobile, pwd, verifyCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

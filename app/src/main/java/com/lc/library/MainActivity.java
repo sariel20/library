@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.lc.lib.ui.activity.BaseMVPActivity;
+import com.lc.library.injection.component.DaggerUserComponent;
+import com.lc.library.injection.module.UserModule;
 import com.lc.library.presenter.RegisterPresenter;
 import com.lc.library.presenter.view.RegisterView;
 
@@ -35,8 +37,13 @@ public class MainActivity extends BaseMVPActivity<RegisterPresenter> implements 
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        /*实例化presenter和view*/
-        mPresenter = new RegisterPresenter();
+        initInjection();
+    }
+
+    /*通过dagger实例化*/
+    private void initInjection() {
+        DaggerUserComponent.builder().activityComponent(activityComponent)
+                .userModule(new UserModule()).build().inject(this);
         mPresenter.mView = this;
     }
 
