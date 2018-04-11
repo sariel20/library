@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">lib</string>
+    <string name="coming_soon_tip">暂无数据</string>
 </resources>

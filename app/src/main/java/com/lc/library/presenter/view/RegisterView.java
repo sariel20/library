@@ -8,5 +8,5 @@ import com.lc.lib.presenter.view.BaseView;
 
 public interface RegisterView extends BaseView {
     /*注册回调*/
-    void onRegisterResult(boolean status);
+    void onRegisterResult(String msg);
 }

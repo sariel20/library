@@ -4,9 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.sariel.user.ui.activity.RegisterActivity">
+    android:layout_height="match_parent">
 
+    <com.lc.lib.widget.HeaderBar
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:isShowBack="true"
+        app:rightText="登录"
+        app:titleText="注册"/>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/userRegPhoneTilayout"

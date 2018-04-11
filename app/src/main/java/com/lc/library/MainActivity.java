@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
+import com.lc.lib.common.AppManager;
 import com.lc.lib.ui.activity.BaseMVPActivity;
 import com.lc.library.injection.component.DaggerUserComponent;
 import com.lc.library.injection.module.UserModule;
@@ -31,17 +31,17 @@ public class MainActivity extends BaseMVPActivity<RegisterPresenter> implements 
     @BindView(R.id.userRegCommitBtn)
     Button userRegCommitBtn;
 
+    private long pressTime = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        initInjection();
     }
 
-    /*通过dagger实例化*/
-    private void initInjection() {
+    @Override
+    public void injectComponent() {
         DaggerUserComponent.builder().activityComponent(activityComponent)
                 .userModule(new UserModule()).build().inject(this);
         mPresenter.mView = this;
@@ -63,8 +63,19 @@ public class MainActivity extends BaseMVPActivity<RegisterPresenter> implements 
     }
 
     @Override
-    public void onRegisterResult(boolean stauts) {
+    public void onRegisterResult(String msg) {
         /*6 注册回调方法*/
-        Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
+        showToast(msg);
+    }
+
+    @Override
+    public void onBackPressed() {
+        long time = System.currentTimeMillis();
+        if ((time - pressTime) > 2000) {
+            showToast("再按一次退出应用程序");
+            pressTime = time;
+        } else {
+            AppManager.getInstence().exitApp(this);
+        }
     }
 }
