@@ -1,5 +1,6 @@
 package com.lc.lib.ui.activity;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
@@ -26,11 +27,17 @@ public abstract class BaseMVPActivity<P extends BasePresenter> extends BaseActiv
 
     public ActivityComponent activityComponent;
 
+    private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initActivityInjection();
         injectComponent();
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setCancelable(false);
+        }
     }
 
     public abstract void injectComponent();
@@ -43,13 +50,18 @@ public abstract class BaseMVPActivity<P extends BasePresenter> extends BaseActiv
     }
 
     @Override
-    public void showLoading() {
-
+    public void showLoading(String msg) {
+        if (!progressDialog.isShowing()) {
+            progressDialog.setMessage(msg);
+            progressDialog.show();
+        }
     }
 
     @Override
     public void hideLoading() {
-
+        if (progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
     }
 
     @Override

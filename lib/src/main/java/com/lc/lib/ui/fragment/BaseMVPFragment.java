@@ -43,7 +43,7 @@ public abstract class BaseMVPFragment<P extends BasePresenter> extends BaseFragm
     }
 
     @Override
-    public void showLoading() {
+    public void showLoading(String msg) {
 
     }
 

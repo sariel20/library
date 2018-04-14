@@ -35,8 +35,7 @@ public class RegisterPresenter extends BasePresenter<RegisterView> {
                     @Override
                     public void onNext(Boolean t) {
                         /*5 注册回调*/
-                        if (t)
-                            mView.onRegisterResult("注册成功");
+                        mView.onRegisterResult("注册" + (t ? "成功" : "失败"));
                     }
                 });
 
