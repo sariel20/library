@@ -53,8 +53,8 @@ public abstract class BaseMVPFragment<P extends BasePresenter> extends BaseFragm
     }
 
     @Override
-    public void onError() {
-
+    public void onError(String msg) {
+        showToast(msg);
     }
 
     public void showToast(String msg) {

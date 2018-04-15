@@ -54,7 +54,6 @@ public class MainActivity extends BaseMVPActivity<RegisterPresenter> implements 
             case R.id.userRegCodeBtn:
                 break;
             case R.id.userRegCommitBtn:
-                showLoading("注册中...");
                 /*1 注册事件监听，发送至presenter*/
                 mPresenter.register(userRegPhoneTIEdit.getText().toString()
                         , userRegPwdTIEdit.getText().toString()
@@ -66,7 +65,6 @@ public class MainActivity extends BaseMVPActivity<RegisterPresenter> implements 
     @Override
     public void onRegisterResult(String msg) {
         /*6 注册回调方法*/
-        hideLoading();
         showToast(msg);
     }
 

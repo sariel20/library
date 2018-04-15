@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.lc.lib.common.AppManager;
+import com.lc.lib.utils.SPUtils;
+import com.lc.lib.utils.Utils;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 /**
@@ -15,6 +17,10 @@ public class BaseActivity extends RxAppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppManager.getInstence().addActivity(this);
+        //初始化app数据存储
+        SPUtils.init(this);
+        //Utils初始化
+        Utils.init(this);
     }
 
     @Override

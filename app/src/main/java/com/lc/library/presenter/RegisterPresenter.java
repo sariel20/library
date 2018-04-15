@@ -27,11 +27,14 @@ public class RegisterPresenter extends BasePresenter<RegisterView> {
     }
 
     public void register(String mobile, String pwd, String verifyCode) {
+//        if (!checkNetWork()) {
+//            return;
+//        }
         /*2 实现注册接口*/
         userService.register(mobile, pwd, verifyCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseSubscriber<Boolean>() {
+                .subscribe(new BaseSubscriber<Boolean>("注册中..", mView) {
                     @Override
                     public void onNext(Boolean t) {
                         /*5 注册回调*/

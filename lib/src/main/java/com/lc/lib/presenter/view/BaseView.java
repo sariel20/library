@@ -8,5 +8,5 @@ public interface BaseView {
 
     void hideLoading();
 
-    void onError();
+    void onError(String msg);
 }

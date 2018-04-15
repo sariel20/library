@@ -1,6 +1,7 @@
 package com.lc.lib.injection.component;
 
 import android.app.Activity;
+import android.content.Context;
 
 import com.lc.lib.injection.ActivityScope;
 import com.lc.lib.injection.module.ActivityModule;
@@ -15,4 +16,6 @@ import dagger.Component;
         modules = {ActivityModule.class})
 public interface ActivityComponent {
     Activity activity();
+
+    Context context();
 }
