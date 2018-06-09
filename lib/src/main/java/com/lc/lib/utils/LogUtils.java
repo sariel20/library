@@ -14,9 +14,9 @@ import java.util.Locale;
 /**
  * desc  : 日志相关工具类
  */
-public class LogUtils2 {
+public class LogUtils {
 
-    private LogUtils2() {
+    private LogUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
@@ -41,10 +41,10 @@ public class LogUtils2 {
         } else {
             dir = Utils.getContext().getCacheDir().getPath() + File.separator;
         }
-        LogUtils2.logSwitch = logSwitch;
-        LogUtils2.log2FileSwitch = log2FileSwitch;
-        LogUtils2.logFilter = logFilter;
-        LogUtils2.tag = tag;
+        LogUtils.logSwitch = logSwitch;
+        LogUtils.log2FileSwitch = log2FileSwitch;
+        LogUtils.logFilter = logFilter;
+        LogUtils.tag = tag;
     }
 
     /**
@@ -90,10 +90,10 @@ public class LogUtils2 {
         }
 
         public void create() {
-            LogUtils2.logSwitch = logSwitch;
-            LogUtils2.log2FileSwitch = log2FileSwitch;
-            LogUtils2.logFilter = logFilter;
-            LogUtils2.tag = tag;
+            LogUtils.logSwitch = logSwitch;
+            LogUtils.log2FileSwitch = log2FileSwitch;
+            LogUtils.logFilter = logFilter;
+            LogUtils.tag = tag;
         }
     }
 

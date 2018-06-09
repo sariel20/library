@@ -7,10 +7,12 @@ import android.widget.Button;
 
 import com.lc.lib.common.AppManager;
 import com.lc.lib.ui.activity.BaseMVPActivity;
+import com.lc.lib.utils.LogUtils;
 import com.lc.library.injection.component.DaggerUserComponent;
 import com.lc.library.injection.module.UserModule;
 import com.lc.library.presenter.RegisterPresenter;
 import com.lc.library.presenter.view.RegisterView;
+import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -66,6 +68,7 @@ public class MainActivity extends BaseMVPActivity<RegisterPresenter> implements 
     public void onRegisterResult(String msg) {
         /*6 注册回调方法*/
         showToast(msg);
+        Logger.e(msg);
     }
 
     @Override
